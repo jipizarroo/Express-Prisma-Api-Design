@@ -3,6 +3,8 @@ import express from 'express';
 import cors from 'cors';
 import morgan from 'morgan';
 
+import { createNewUser, signIn } from './handlers/user';
+import { protect } from './modules/auth';
 import router from './router';
 
 
@@ -32,6 +34,10 @@ app.get("/", (req, res) => {
   res.json({ message: "hello" });
 });
 
-app.use('/api', router)
+app.use('/api', protect, router)
+
+app.post('/user', createNewUser)
+app.post('/signin', signIn)
+
 
 export default app
