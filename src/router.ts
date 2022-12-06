@@ -4,14 +4,14 @@ import {
   createProduct,
   deleteProduct,
   getOneProduct,
-  getProducts
+  getProducts,
 } from "./handlers/product";
 import {
   createUpdate,
   deleteUpdate,
   getOneUpdate,
   getUpdates,
-  updateUpdate
+  updateUpdate,
 } from "./handlers/update";
 import { handleInputErrors } from "./modules/middleware";
 
@@ -73,4 +73,8 @@ router.put(
 router.post("/updatepoint", () => {});
 router.delete("/updatepoint/:id", () => {});
 
+router.use((err, req, res, next) => {
+  console.log(err);
+  res.json({ message: "in router handler" });
+});
 export default router;

@@ -42,7 +42,11 @@ export const createUpdate = async (req, res) => {
 
   const update = await prisma.update.create({
     // it got validates before, thats why we trust it
-    data: req.body,
+    data: {
+      title: req.body.title,
+      body: req.body.body,
+      product: { connect: { id: product.id } },
+    },
   });
 
   res.json({ data: update });
