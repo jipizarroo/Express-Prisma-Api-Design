@@ -5,3 +5,4 @@
 
 npx prisma migrate dev --name
 
+npx ts-jest config:init => will create the config to run the jest test in our project.

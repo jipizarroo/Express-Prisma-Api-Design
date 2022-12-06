@@ -26,9 +26,7 @@ app.use((req, res, next) => {
 });
 
 app.get("/", (req, res, next) => {
-  setTimeout(() => {
-    next(new Error("hello"));
-  }, 1);
+  res.json({ message: "hello" });
 });
 
 app.use("/api", protect, router);
